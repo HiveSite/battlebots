@@ -1369,40 +1369,104 @@ if (info) alert(`${info.title}\n\nDimenzije: ${info.size}\n\n${info.description}
 
 
 // ===== Apps Script submit =====
-async function handleFormSubmit(e) {
-e.preventDefault();
-const form = e.target;
-const btn = form.querySelector('#submitBtn') || form.querySelector('button[type="submit"]');
-const statusEl = document.getElementById('formStatus');
-const original = btn ? btn.textContent : 'Send';
-const fd = new FormData(form);
-const params = new URLSearchParams(fd);
+<!-- Ubaci OVO ispod tvoje WEBAPP_URL konstante ili pred kraj fajla -->
+<script>
+(function ensureHiddenMetaFields(){
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const hidden = [
+    ['source',''],
+    ['utm_source',''],
+    ['utm_medium',''],
+    ['utm_campaign',''],
+    ['userAgent','']
+  ];
+  hidden.forEach(([name,val])=>{
+    if (!form.querySelector(`[name="${name}"]`)) {
+      const i = document.createElement('input');
+      i.type = 'hidden'; i.name = name; i.value = val;
+      form.appendChild(i);
+    }
+  });
+})();
+</script>
 
-if (btn) { btn.disabled = true; btn.textContent = 'Slanje...'; }
-if (statusEl) statusEl.textContent = '';
-
-try {
-// no-cors jer Apps Script po difoltu nema CORS headere
-await fetch(WEBAPP_URL, {
-method: 'POST',
-mode: 'no-cors',
-headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-body: params.toString()
-});
-if (btn) { btn.textContent = 'Poruka poslata! ✓'; btn.style.background = 'linear-gradient(45deg,#10b981,#059669)'; }
-if (statusEl) statusEl.textContent = 'Hvala! Javićemo ti se uskoro.';
-form.reset();
-} catch (err) {
-console.error(err);
-if (btn) { btn.textContent = 'Pokušaj ponovo'; btn.style.background = 'linear-gradient(45deg,#ef4444,#b91c1c)'; }
-if (statusEl) statusEl.textContent = 'Došlo je do greške. Piši nam direktno na office@hiveagency.me.';
-} finally {
-setTimeout(() => {
-if (btn) { btn.disabled = false; btn.textContent = original; btn.style.background = 'linear-gradient(45deg,#ffc107,#ff6b35)'; }
-}, 2000);
+<script>
+function parseQuery(qs) {
+  const p = new URLSearchParams(qs || '');
+  return Object.fromEntries([...p.entries()]);
 }
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const statusEl = document.getElementById('formStatus');
+  const original = btn ? btn.textContent : 'Pošalji';
+
+  // 1) Pokupi vrijednosti iz tvoje postojeće forme
+  const name = (form.querySelector('[name="name"]')?.value || '').trim();
+  const email = (form.querySelector('[name="email"]')?.value || '').trim();
+  const interest = (form.querySelector('[name="interest"]')?.value || '').trim();
+  const message = (form.querySelector('[name="message"]')?.value || '').trim();
+
+  // 2) Minimalna validacija (usklađena sa backend-om: ime, email, poruka)
+  if (!name || !email || !message) {
+    if (statusEl) { statusEl.textContent = 'Popuni ime, e-mail i poruku.'; statusEl.style.color = '#fca5a5'; }
+    return;
+  }
+
+  // 3) UTM/source/UA
+  const url = new URL(window.location.href);
+  const utm = parseQuery(url.search);
+  const payload = {
+    // MAPIRANJE NA BACKEND KLJUČEVE:
+    ime: name,
+    email: email,
+    tip: interest,        // <-- interest -> tip
+    poruka: message,      // <-- message -> poruka
+
+    // meta
+    source: document.referrer || url.origin,
+    utm_source: utm.utm_source || '',
+    utm_medium: utm.utm_medium || '',
+    utm_campaign: utm.utm_campaign || '',
+    userAgent: navigator.userAgent || ''
+  };
+
+  // 4) UI state
+  if (btn) { btn.disabled = true; btn.textContent = 'Slanje...'; }
+  if (statusEl) { statusEl.textContent = ''; statusEl.style.color = ''; }
+
+  try {
+    // Šaljemo kao x-www-form-urlencoded (backend to očekuje)
+    const body = new URLSearchParams(payload).toString();
+    const res = await fetch(WEBAPP_URL, {
+      method: 'POST',
+      mode: 'cors', // backend već vraća CORS headere
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body
+    });
+
+    // Apps Script vraća JSON {ok:true/false,...}
+    const json = await res.clone().json().catch(()=> ({}));
+    if (!res.ok || json.ok === false) throw new Error(json.error || `HTTP ${res.status}`);
+
+    if (btn) { btn.textContent = 'Poruka poslata! ✓'; btn.style.background = 'linear-gradient(45deg,#10b981,#059669)'; }
+    if (statusEl) { statusEl.textContent = 'Hvala! Javićemo ti se uskoro.'; statusEl.style.color = '#a7f3d0'; }
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    if (btn) { btn.textContent = 'Pokušaj ponovo'; btn.style.background = 'linear-gradient(45deg,#ef4444,#b91c1c)'; }
+    if (statusEl) { statusEl.textContent = 'Došlo je do greške. Piši nam na office@hiveagency.me.'; statusEl.style.color = '#fecaca'; }
+  } finally {
+    setTimeout(() => {
+      if (btn) { btn.disabled = false; btn.textContent = original; btn.style.background = 'linear-gradient(45deg,#ffc107,#ff6b35)'; }
+    }, 2000);
+  }
 }
 </script>
+
 
 
 <!-- STICKY ROTATING BANNER -->
