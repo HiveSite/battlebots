@@ -1130,23 +1130,59 @@ Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Uče
 <h2 class="text-4xl md:text-5xl font-bold mb-8 font-montserrat neon-text">Želiš da učestvuješ, budeš mentor ili sponzor?</h2>
 
 <div class="phase-card p-8 rounded-xl max-w-2xl mx-auto">
-<form id="contactForm" class="space-y-6" method="POST" onsubmit="handleFormSubmit(event)">
-<div><input name="name" id="name" type="text" placeholder="Ime i prezime" required class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none" /></div>
-<div><input name="email" id="email" type="email" placeholder="E-mail" required class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none" /></div>
-<div>
-<select name="interest" id="interest" required class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-yellow-400 focus:outline-none">
-<option value="">Želim da...</option>
-<option value="participate">Učestvujem na takmičenju</option>
-<option value="mentor">Budem mentor</option>
-<option value="sponsor">Sponzorišem događaj</option>
-<option value="partner">Postanem partner</option>
-<option value="advertise">Oglašavam se</option>
-</select>
-</div>
-<div><textarea name="message" id="message" placeholder="Reci nam ukratko o tvom interesovanju..." rows="4" class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none"></textarea></div>
-<button id="submitBtn" type="submit" class="cta-button text-black font-bold py-4 px-8 rounded-full text-lg w-full">Pošalji poruku</button>
-<p id="formStatus" class="text-sm text-gray-300 pt-2"></p>
-</form>
+<script>
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('#submitBtn') || form.querySelector('button[type="submit"]');
+  const statusEl = document.getElementById('formStatus');
+  const original = btn ? btn.textContent : 'Pošalji';
+
+  const fd = new FormData(form);
+
+  // DODATNO: meta polja koja backend već podržava
+  fd.append('source', location.href);
+  const usp = new URLSearchParams(location.search);
+  if (usp.get('utm_source'))   fd.append('utm_source',   usp.get('utm_source'));
+  if (usp.get('utm_medium'))   fd.append('utm_medium',   usp.get('utm_medium'));
+  if (usp.get('utm_campaign')) fd.append('utm_campaign', usp.get('utm_campaign'));
+  fd.append('userAgent', navigator.userAgent || '');
+
+  const params = new URLSearchParams(fd);
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Slanje...'; }
+  if (statusEl) statusEl.textContent = '';
+
+  try {
+    const res = await fetch(WEBAPP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: params.toString()
+    });
+
+    let data = {};
+    try { data = await res.json(); } catch (_) {}
+
+    if (data.ok) {
+      if (btn) { btn.textContent = 'Poruka poslata! ✓'; btn.style.background = 'linear-gradient(45deg,#10b981,#059669)'; }
+      if (statusEl) statusEl.textContent = 'Hvala! Javićemo ti se uskoro.';
+      form.reset();
+    } else {
+      if (btn) { btn.textContent = 'Pokušaj ponovo'; btn.style.background = 'linear-gradient(45deg,#ef4444,#b91c1c)'; }
+      if (statusEl) statusEl.textContent = (data && data.error) ? data.error : 'Došlo je do greške. Piši nam direktno na office@hiveagency.me.';
+    }
+  } catch (err) {
+    console.error(err);
+    if (btn) { btn.textContent = 'Pokušaj ponovo'; btn.style.background = 'linear-gradient(45deg,#ef4444,#b91c1c)'; }
+    if (statusEl) statusEl.textContent = 'Došlo je do greške. Piši nam direktno na office@hiveagency.me.';
+  } finally {
+    setTimeout(() => {
+      if (btn) { btn.disabled = false; btn.textContent = original; btn.style.background = 'linear-gradient(45deg,#ffc107,#ff6b35)'; }
+    }, 2000);
+  }
+}
+</script>
+
 
 <div class="mt-8 pt-8 border-t border-gray-700">
 <p class="text-gray-300 mb-4">Ili nas kontaktiraj direktno:</p>
