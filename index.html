@@ -1207,8 +1207,8 @@ const content = document.getElementById(faqId + '-content');
 const icon = document.getElementById(faqId + '-icon');
 if (!content || !icon) return;
 const isHidden = content.classList.contains('hidden');
-document.querySelectorAll('[id$="-content"]').forEach(el => el.classList.add('hidden'));
-document.querySelectorAll('[id$="-icon"]').forEach(el => el.style.transform = 'rotate(0deg)');
+document.querySelectorAll('#faq [id$="-content"]').forEach(el => el.classList.add('hidden'));
+document.querySelectorAll('#faq [id$="-icon"]').forEach(el => el.style.transform = 'rotate(0deg)');
 if (isHidden) {
 content.classList.remove('hidden');
 icon.style.transform = 'rotate(180deg)';
