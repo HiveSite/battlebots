@@ -1135,6 +1135,55 @@ Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Uče
 </a>
 </div>
 
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-black">
+  <div class="max-w-xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-8 text-yellow-400">Kontaktiraj nas</h2>
+    
+    <form id="contactForm" class="space-y-4">
+      <input type="text" name="ime" placeholder="Ime" required
+        class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400" />
+      
+      <input type="text" name="prezime" placeholder="Prezime" required
+        class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400" />
+
+      <input type="email" name="email" placeholder="Email" required
+        class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400" />
+
+      <textarea name="poruka" rows="4" placeholder="Poruka" required
+        class="w-full p-3 rounded bg-gray-800 text-white border border-gray-700 focus:border-yellow-400"></textarea>
+
+      <button type="submit"
+        class="w-full py-3 rounded-lg font-bold bg-yellow-500 text-black hover:bg-yellow-400 transition">
+        Pošalji
+      </button>
+    </form>
+
+    <p id="msg" class="mt-4 text-gray-300"></p>
+  </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = new FormData(e.target);
+
+  fetch("PASTE_YOUR_GS_WEBAPP_URL_HERE", {
+    method: "POST",
+    body: data
+  })
+  .then(() => {
+    document.getElementById("msg").innerHTML = "✅ Poruka je poslata!";
+    e.target.reset();
+  })
+  .catch(() => {
+    document.getElementById("msg").innerHTML = "❌ Došlo je do greške — pokušaj ponovo.";
+  });
+});
+</script>
+
+
+       
 </div>
 </div>
 </div>
@@ -1144,7 +1193,7 @@ Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Uče
 <!-- FOOTER -->
 <footer class="bg-gray-900 py-8 border-t border-gray-800">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<p class="text-gray-400">© <span id="yearSpan">2024</span> BattleBotsArena.me - Engineering Arena for the Next Generation</p>
+<p class="text-gray-400">© <span id="yearSpan">2025</span> BattleBotsArena.me - Engineering Arena for the Next Generation</p>
 <p class="text-gray-500 mt-2">Organized by Hive Agency | Supported by doMEn (.ME) – Spark.me STEAM Adventure</p>
 </div>
 </footer>
@@ -1152,7 +1201,7 @@ Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Uče
 <!-- SCRIPTS -->
 <script>
 // ===== CONFIG =====
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbz40OIEX1KWnMDw6zRnsQuLhx7abpdjYGgFKrtfZ7G0uBDd2_c6nojv2_6PQHhJeWfB/exec";
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycby0PZOe9HvvAoHOGaaDB2op2URHBo8ZQuI9t0bjGIGG3kY9y4qHSl4qpD0UwhvVG5dr/exec";
 
 // Year in footer
 document.getElementById('yearSpan').textContent = new Date().getFullYear();
@@ -1236,7 +1285,7 @@ document.body.style.overflow = 'auto';
 function getBlogContent(slug) {
 const map = {
 'arena-design': {
-date: 'December 15, 2024',
+date: 'December 15, 2025',
 title: 'BattleBotsArena.me Arena Design Revealed',
 author: 'Engineering Team',
 content: `
@@ -1259,7 +1308,7 @@ content: `
        `
 },
 'mentors': {
-date: 'December 10, 2024',
+date: 'December 10, 2025',
 title: 'Meet Our Expert Mentors',
 author: 'Team Spotlight',
 content: `
@@ -1273,7 +1322,7 @@ content: `
        `
 },
 'robot-kits': {
-date: 'December 5, 2024',
+date: 'December 5, 2025',
 title: 'Robot Kit Components Unveiled',
 author: 'Technical Details',
 content: `
@@ -1296,19 +1345,19 @@ content: `
        `
 },
 'workshop-cities': {
-date: 'November 28, 2024',
+date: 'November 28, 2025',
 title: 'Workshop Cities Announced',
 author: 'Announcements',
 content: `<p class="text-gray-300">Workshops in Podgorica, Nikšić, Bar, Bijelo Polje, and Pljevlja with school & tech hub partnerships.</p>`
 },
 'safety-rules': {
-date: 'November 20, 2024',
+date: 'November 20, 2025',
 title: 'Safety First: Competition Rules',
 author: 'Rules & Safety',
 content: `<p class="text-gray-300">Clear rules: weight classes, weapon restrictions, inspections, and arena protocols to keep it fair and safe.</p>`
 },
 'spark-partnership': {
-date: 'November 15, 2024',
+date: 'November 15, 2025',
 title: 'Partnership with Spark.me STEAM',
 author: 'Partnerships',
 content: `<p class="text-gray-300">Official partnership with doMEn (.ME) and Spark.me STEAM Adventure to boost STEAM education in Montenegro.</p>`
