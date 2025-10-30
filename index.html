@@ -1458,11 +1458,12 @@ if (info) alert(`${info.title}\n\nDimenzije: ${info.size}\n\n${info.description}
     const original = btn ? btn.textContent : 'Pošalji';
 
     // Polja sa fronta
-    const name = (form.querySelector('[name="name"]')?.value || '').trim();
-    const email = (form.querySelector('[name="email"]')?.value || '').trim();
-    const interest = (form.querySelector('[name="interest"]')?.value || '').trim();
-    const message = (form.querySelector('[name="message"]')?.value || '').trim();
+      const name = (form.querySelector('[name="ime"]')?.value || '').trim();
+      const email = (form.querySelector('[name="email"]')?.value || '').trim();
+      const interest = (form.querySelector('[name="tip"]')?.value || '').trim();
+      const message = (form.querySelector('[name="poruka"]')?.value || '').trim();
 
+        
     // Minimalna validacija — backend traži ime, email, poruku
     if (!name || !email || !message) {
       if (statusEl) { statusEl.textContent = 'Popuni ime, e-mail i poruku.'; statusEl.style.color = '#fca5a5'; }
