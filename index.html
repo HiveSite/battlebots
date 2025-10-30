@@ -49,7 +49,7 @@ a.appendChild(r);
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- Tailwind (CDN) -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -1150,68 +1150,8 @@ Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Uče
       Prijava & Kontakt
     </h2>
 
-    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6 phase-card p-8 rounded-xl">
-      
-      <!-- Ime -->
-      <div>
-        <label class="block text-gray-300 mb-2 text-sm">Ime i prezime *</label>
-        <input 
-          type="text" 
-          name="ime" 
-          class="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-700 text-white focus:ring-yellow-400"
-          placeholder="Unesi ime"
-          required />
-      </div>
+ </form>
 
-      <!-- Email -->
-      <div>
-        <label class="block text-gray-300 mb-2 text-sm">Email *</label>
-        <input 
-          type="email" 
-          name="email" 
-          class="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-700 text-white focus:ring-yellow-400"
-          placeholder="example@email.com"
-          required />
-      </div>
-
-      <!-- Tip -->
-      <div>
-        <label class="block text-gray-300 mb-2 text-sm">Želim da učestvujem kao:</label>
-        <select 
-          name="tip" 
-          class="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-700 text-white focus:ring-yellow-400">
-          <option value="Takmičar">Takmičar</option>
-          <option value="Mentor">Mentor</option>
-          <option value="Volonter">Volonter</option>
-          <option value="Sponzor">Sponzor</option>
-          <option value="Partner">Partner</option>
-          <option value="Novinar / Media">Media</option>
-        </select>
-      </div>
-
-      <!-- Poruka -->
-      <div>
-        <label class="block text-gray-300 mb-2 text-sm">Poruka *</label>
-        <textarea 
-          name="poruka" 
-          rows="4"
-          class="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-700 text-white focus:ring-yellow-400"
-          placeholder="Napiši nam motivaciju, ideju ili pitanje..."
-          required></textarea>
-      </div>
-
-      <!-- Status -->
-      <p id="formStatus" class="text-sm text-yellow-400"></p>
-
-      <!-- Submit -->
-      <button 
-        id="submitBtn"
-        type="submit" 
-        class="w-full font-semibold py-3 rounded-lg cta-button text-black text-lg">
-        Pošalji prijavu
-      </button>
-
-    </form>
   </div>
 </section>
 
@@ -1247,6 +1187,42 @@ const target = document.querySelector(a.getAttribute('href'));
 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 });
+
+      <!-- FORM SUBMIT SCRIPT -->
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwN7bF1KImcjH_0yAu0ilUEDkvd4297yvbR3geCrzP3a0WfeChZXS4j72Wavnjzkj_cLQ/exec";
+const form = document.getElementById('contactForm');
+const formState = document.getElementById('formState');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  formState.textContent = "⏳ Šalje se...";
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) });
+    if (response.ok) {
+      form.reset();
+      formState.textContent = "✅ Super, upit je uspješno poslat!";
+    } else {
+      formState.textContent = "⚠️ Greška pri slanju. Pokušajte ponovo.";
+    }
+  } catch (err) {
+    formState.textContent = "❌ Došlo je do greške na mreži.";
+  }
+  submitBtn.disabled = false;
+});
+
+document.querySelectorAll('input[name="tip"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const isCompany = radio.value === 'Kompanija' && radio.checked;
+    document.getElementById('companyFields').classList.toggle('hidden', !isCompany);
+    document.getElementById('companyMore').classList.toggle('hidden', !isCompany);
+  });
+});
+</script>
+
 
 
 // Sticky nav background toggle
