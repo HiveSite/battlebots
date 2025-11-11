@@ -1041,87 +1041,182 @@ if (e.key === 'Escape') closeFact();
 
 
 <!-- FAQ -->
-<!--<section id="faq" class="py-20 bg-gray-900/50">
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="section-divider mb-12"></div>
-<h2 class="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat neon-text">Često postavljana pitanja</h2>
+<!-- FAQ -->
+<section id="faq" class="py-20 bg-gray-900/50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="section-divider mb-12"></div>
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat neon-text">
+      Često postavljana pitanja
+    </h2>
 
-<div class="space-y-6">
-<!-- FAQ template item -->
-<!--<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq1')">
-<h3 class="text-lg font-semibold text-white">Ko može učestvovati u BattleBotsArena.me?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq1-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq1-content">
-<p class="text-gray-300 leading-relaxed">
-Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Učesnici mogu nastupiti individualno ili u timovima (2–4 člana). Prethodno iskustvo u robotici nije potrebno — naš edukativni bootcamp obezbjeđuje svu potrebnu osnovu. Dobrodošli su studenti, mladi profesionalci i svi strastveni prema tehnologiji i inovacijama.
-</p>
-</div>
-</div>
+    <div class="space-y-6">
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq2')">
-<h3 class="text-lg font-semibold text-white">Da li učešće košta?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq2-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq2-content">
-<p class="text-gray-300 leading-relaxed">Ne! Učešće na BattleBotsArena.me je potpuno besplatno. Svi materijali za radionice, setovi za izradu robota, alati i mentorstvo obezbjeđeni su bez naknade.</p>
-</div>
-</div>
+      <!-- FAQ 1 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq1')">
+          <h3 class="text-lg font-semibold text-white">Ko može učestvovati u BattleBotsArena.me?</h3>
+          <svg id="faq1-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq1-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Takmičenje je otvoreno za mlade od 15–30 godina koji žive u Crnoj Gori. Učesnici mogu
+            nastupiti individualno ili u timovima od 1–5 članova. Prethodno iskustvo u robotici nije
+            potrebno — naš edukativni bootcamp obezbjeđuje svu potrebnu osnovu. Dobrodošli su
+            srednjoškolci, studenti i svi mladi strastveni prema tehnologiji i inovacijama.
+          </p>
+        </div>
+      </div>
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq3')">
-<h3 class="text-lg font-semibold text-white">Šta ću naučiti tokom edukativnog bootcampa?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq3-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq3-content">
-<p class="text-gray-300 leading-relaxed">Programiranje, osnove elektronike, 3D dizajn, integracija senzora, upravljanje motorima, principi mehaničkog dizajna i upravljanje projektom.</p>
-</div>
-</div>
+      <!-- FAQ 2 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq2')">
+          <h3 class="text-lg font-semibold text-white">Da li učešće košta?</h3>
+          <svg id="faq2-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq2-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Ne! Učešće na BattleBotsArena.me je potpuno besplatno. Svi materijali za radionice, setovi
+            za izradu robota, alati i mentorstvo obezbijeđeni su bez naknade. Projekat podržavaju
+            Spark.me STEAM avantura i kompanija doMEn (.ME).
+          </p>
+        </div>
+      </div>
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq4')">
-<h3 class="text-lg font-semibold text-white">Kako se bira 10 finalnih timova?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq4-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq4-content">
-<p class="text-gray-300 leading-relaxed">Selektovanje se zasniva na rezultatima na bootcampu, kvalitetu dizajnerskog prijedloga, timskoj saradnji i tehničkom razumijevanju demonstriranom na radionicama.</p>
-</div>
-</div>
+      <!-- FAQ 3 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq3')">
+          <h3 class="text-lg font-semibold text-white">Šta ću naučiti tokom edukativnog bootcampa?</h3>
+          <svg id="faq3-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq3-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Tokom bootcampa naučićeš osnove programiranja (Arduino i senzori), elektronike,
+            konstrukcije, 3D dizajna i timskog rada. Svaka radionica ima praktičan karakter — učesnici
+            rade na realnim mini-projektima i pripremaju se za izradu borbenog robota.
+          </p>
+        </div>
+      </div>
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq6')">
-<h3 class="text-lg font-semibold text-white">Mogu li učestvovati ako nisam iz jednog od 5 gradova radionica?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq6-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq6-content">
-<p class="text-gray-300 leading-relaxed">Da. Pridruži se najbližem gradu radionice; dostupni su i onlajn resursi i mentorstvo.</p>
-</div>
-</div>
+      <!-- FAQ 4 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq4')">
+          <h3 class="text-lg font-semibold text-white">Kako se bira 10 finalnih timova?</h3>
+          <svg id="faq4-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq4-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Selektovanje se zasniva na rezultatima sa bootcampa — kreativnost, kvalitet dizajna,
+            saradnja u timu i razumijevanje tehničkih koncepata. Najboljih 10 timova prolazi u drugu
+            fazu i dobija mentorsku podršku i opremu za izradu robota.
+          </p>
+        </div>
+      </div>
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq7')">
-<h3 class="text-lg font-semibold text-white">Koje nagrade timovi mogu osvojiti?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq7-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq7-content">
-<p class="text-gray-300 leading-relaxed">Pehari, sertifikati, napredni setovi za robotiku, 3D štampači, vaučeri i industrijsko umrežavanje.</p>
-</div>
-</div>
+      <!-- FAQ 5 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq5')">
+          <h3 class="text-lg font-semibold text-white">Mogu li učestvovati ako nisam iz jednog od 5 gradova radionica?</h3>
+          <svg id="faq5-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq5-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Da! Prijavi se u najbližem gradu — radionice su otvorene za sve. Dostupni su i online
+            resursi, mentori i podrška putem digitalnih kanala, tako da niko nije uskraćen za znanje
+            i iskustvo.
+          </p>
+        </div>
+      </div>
 
-<div class="phase-card rounded-xl overflow-hidden">
-<button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors" onclick="toggleFAQ('faq8')">
-<h3 class="text-lg font-semibold text-white">Kako se prijavljujem za takmičenje?</h3>
-<svg class="w-6 h-6 text-yellow-400 transform transition-transform" id="faq8-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-</button>
-<div class="hidden px-6 pb-6" id="faq8-content">
-<p class="text-gray-300 leading-relaxed">Prijave se otvaraju krajem 2025. preko našeg sajta i društvenih mreža. Izaberi svoj grad, odgovori na nekoliko pitanja i, po potrebi, formiraj tim na radionicama.</p>
-</div>
-</div>
-</div>
-</div>
+      <!-- FAQ 6 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq6')">
+          <h3 class="text-lg font-semibold text-white">Koje nagrade timovi mogu osvojiti?</h3>
+          <svg id="faq6-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq6-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Nagrade uključuju pehare, sertifikate, napredne setove za robotiku, 3D štampače,
+            vaučere i industrijsko umrežavanje. Osim nagrada, svi timovi stiču vrijedna praktična
+            znanja i kontakte u tech zajednici.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 7 -->
+      <div class="phase-card rounded-xl overflow-hidden">
+        <button class="w-full p-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors"
+                onclick="toggleFAQ('faq7')">
+          <h3 class="text-lg font-semibold text-white">Kako se prijavljujem za takmičenje?</h3>
+          <svg id="faq7-icon" class="w-6 h-6 text-yellow-400 transition-transform duration-300"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="faq7-content" class="hidden px-6 pb-6 transition-all duration-300 ease-in-out">
+          <p class="text-gray-300 leading-relaxed">
+            Prijave se vrše putem našeg sajta BattleBotsArena.me i društvenih mreža. Popuni
+            prijavni formular, izaberi svoj grad i — spreman si! Ako nemaš tim, možeš ga formirati
+            tokom bootcampa.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+<!-- JS: FAQ toggle -->
+<script>
+function toggleFAQ(id) {
+  const content = document.getElementById(id + '-content');
+  const icon = document.getElementById(id + '-icon');
+  if (!content || !icon) return;
+
+  const isHidden = content.classList.contains('hidden');
+
+  // zatvori sve ostale
+  document.querySelectorAll('#faq [id$="-content"]').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('#faq [id$="-icon"]').forEach(el => el.style.transform = 'rotate(0deg)');
+
+  // otvori kliknuti
+  if (isHidden) {
+    content.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
+
 
 <!-- CONTACT (Apps Script forma) -->
 
