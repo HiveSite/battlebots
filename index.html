@@ -354,6 +354,145 @@ if (fab) fab.setAttribute('onclick', "openFact('about')");
 </div>
 
 
+<!-- ACTIVITIES / WORKSHOPS Radionice -->
+<section id="activities" class="py-20 bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="section-divider mb-12"></div>
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 font-montserrat neon-text">
+      Aktivnosti & radionice
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Radionica 1 – Pitching / javni nastup -->
+      <article class="phase-card p-0 rounded-xl overflow-hidden">
+        
+        <!-- Slika 1920x1080 -->
+        <div class="w-full" style="aspect-ratio: 16/9;">
+          <img 
+            src="PUTANJA-DO-SLIKE.jpg"
+            alt="Radionica javnog nastupa"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="p-6">
+          <span class="text-yellow-400 text-xs font-semibold">Novembar 2025.</span>
+
+          <h3 id="pitch-title" class="text-xl font-bold text-white mb-2 mt-2">
+            Radionica javnog nastupa & predstavljanja ideja
+          </h3>
+
+          <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+            Kako da tvoja ideja zvuči jednako dobro kao što stvarno jeste.
+          </p>
+
+          <button 
+            class="text-yellow-400 hover:text-yellow-300 text-sm font-semibold"
+            onclick="openFact('pitch')">
+            Detalji →
+          </button>
+        </div>
+      </article>
+
+
+
+      <!-- Radionica 2 – TBA -->
+      <article class="phase-card p-0 rounded-xl overflow-hidden">
+
+        <div class="w-full bg-gray-800/50 flex items-center justify-center text-gray-500"
+             style="aspect-ratio: 16/9;">
+          <span class="text-sm">Slika uskoro</span>
+        </div>
+
+        <div class="p-6">
+          <span class="text-red-400 text-xs font-semibold">TBA</span>
+
+          <h3 id="work2-title" class="text-xl font-bold text-white mb-2 mt-2">
+            Arduino & osnove programiranja robota
+          </h3>
+
+          <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+            Detalji o radionici biće objavljeni uskoro.
+          </p>
+
+          <button 
+            class="text-red-400 hover:text-red-300 text-sm font-semibold"
+            onclick="openFact('work2')">
+            Više informacija →
+          </button>
+        </div>
+      </article>
+
+
+
+      <!-- Radionica 3 – TBA -->
+      <article class="phase-card p-0 rounded-xl overflow-hidden">
+        
+        <div class="w-full bg-gray-800/50 flex items-center justify-center text-gray-500"
+             style="aspect-ratio: 16/9;">
+          <span class="text-sm">Slika uskoro</span>
+        </div>
+
+        <div class="p-6">
+          <span class="text-yellow-400 text-xs font-semibold">TBA</span>
+
+          <h3 id="work3-title" class="text-xl font-bold text-white mb-2 mt-2">
+            3D dizajn & konstrukcija šasije
+          </h3>
+
+          <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+            Detalji o radionici biće dodati uskoro.
+          </p>
+
+          <button 
+            class="text-yellow-400 hover:text-yellow-300 text-sm font-semibold"
+            onclick="openFact('work3')">
+            Više informacija →
+          </button>
+        </div>
+      </article>
+
+
+
+      <!-- Radionica 4 – TBA -->
+      <article class="phase-card p-0 rounded-xl overflow-hidden">
+        
+        <div class="w-full bg-gray-800/50 flex items-center justify-center text-gray-500"
+             style="aspect-ratio: 16/9;">
+          <span class="text-sm">Slika uskoro</span>
+        </div>
+
+        <div class="p-6">
+          <span class="text-red-400 text-xs font-semibold">TBA</span>
+
+          <h3 id="work4-title" class="text-xl font-bold text-white mb-2 mt-2">
+            Senzori, pokret & taktike u areni
+          </h3>
+
+          <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+            Detalji o radionici dolaze uskoro.
+          </p>
+
+          <button 
+            class="text-red-400 hover:text-red-300 text-sm font-semibold"
+            onclick="openFact('work4')">
+            Više informacija →
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+       
+
 <!-- HOW IT WORKS -->
 <section id="how-it-works" class="py-20 bg-black">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -950,6 +1089,62 @@ Poenta nije najlakši robot, već najpametnije raspoređena masa naspram strateg
 <figcaption class="text-xs text-gray-400 mt-2">Gram po gram – budžet mase odlučuje detalje i pobjede.</figcaption>
 </figure>
 </div>
+
+<div class="hidden">
+
+  <!-- Radionica 1 – detalji -->
+  <div id="pitch-content">
+    <h4 class="text-xl font-semibold mb-3">Radionica javnog nastupa & predstavljanja ideja</h4>
+
+    <p class="text-gray-200 leading-relaxed mb-3">
+      Imaš tremu kad pričaš pred ljudima? Ili ti se desi da tvoja super ideja i ne zvuči
+      toliko super kad je predstaviš pred drugima?
+    </p>
+
+    <p class="text-gray-200 leading-relaxed mb-3">
+      Ako želiš da budeš sigurniji u svom predstavljanju, da prezentuješ svoje ideje kao
+      profesionalac i kupiš publiku dobrim nastupom – ova radionica je za tebe!
+    </p>
+
+    <p class="text-gray-200 leading-relaxed mb-4">
+      🎤 <strong>Jelena Marković</strong><br>
+      📍 Coinis zgrada, Bulevar Stanka Dragojevića, Podgorica<br>
+      📅 29.11. u 17h
+    </p>
+
+    <p class="text-gray-200 leading-relaxed">
+      Učešće je besplatno, a prijave su u DM. Broj mjesta je ograničen.
+    </p>
+  </div>
+
+  <!-- Radionica 2 TBA -->
+  <div id="work2-content">
+    <h4 class="text-xl font-semibold mb-3">Arduino & programiranje robota</h4>
+    <p class="text-gray-200 leading-relaxed">
+      Detalji ove radionice biće objavljeni uskoro.
+    </p>
+  </div>
+
+  <!-- Radionica 3 TBA -->
+  <div id="work3-content">
+    <h4 class="text-xl font-semibold mb-3">3D dizajn & konstrukcija</h4>
+    <p class="text-gray-200 leading-relaxed">
+      Detaljne informacije o radionici biće dostupne uskoro.
+    </p>
+  </div>
+
+  <!-- Radionica 4 TBA -->
+  <div id="work4-content">
+    <h4 class="text-xl font-semibold mb-3">Senzori i taktike u areni</h4>
+    <p class="text-gray-200 leading-relaxed">
+      Kompletan sadržaj radionice biće uskoro dodat.
+    </p>
+  </div>
+
+</div>
+
+
+       
 </div>
 
 
